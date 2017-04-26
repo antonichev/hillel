@@ -1,0 +1,7 @@
+source 'https://rubygems.org'
+
+gem 'rails'
+gem 'erubis'
+gem 'puma'
+gem 'mysql'
+gem 'sqlite'

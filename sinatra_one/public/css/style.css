@@ -1,0 +1,66 @@
+
+h1 {
+	margin: 0;
+	padding: 0;
+	font-weight: 200;
+	color: #000000;
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}
+
+p {
+  font-size: 15pt;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #444444;
+    align-items: center;
+}
+
+li {
+    float: left;
+    text-align: center;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.current {
+  color: lightblue;
+}
+
+li a:hover {
+    background-color: #111111;
+}
+
+figure {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  display: inline-block;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+figcaption {
+	text-align: center;
+}
+
+/*div.pic::after {
+	content: "";
+	display: inline;
+  clear: both;
+}*/

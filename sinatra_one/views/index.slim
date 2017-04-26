@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title BSE / Main
+    link rel="stylesheet" type="text/css" href="css/style.css"
+
+  body
+    h1 Welcome to the BSE (Best Shop Ever)!
+	
+	hr
+    br
+
+	ul
+	  li 
+	    a href="/" class="current" MAIN PAGE
+	  li 
+	  	a href="/contacts" CONTACT US
+	  li 
+	  	a href="/about" ABOUT US
+	
+	- 30.times do |n|
+		- if n % 10 == 0
+			br
+			h3 #{Faker::Commerce.department(2, true)}
+
+		figure
+			img src="http://lorempixel.com/320/240/technics?random=#{n}/BSE" alt="image not available"
+			figcaption #{Faker::Commerce.product_name} <br> Price: #{Faker::Commerce.price} USD

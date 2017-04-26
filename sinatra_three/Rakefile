@@ -1,0 +1,25 @@
+require_relative 'config/configuration'
+require_relative 'db/seed'
+require 'yaml'
+
+namespace :db do
+  task :migrate do
+    ActiveRecord::Migrator.migrate('db/migrations', nil)
+  end
+
+  task :seed_products do
+   if Models::Product.exists?
+      log('Product table is not empty.')
+    else
+      Seed.seed
+    end
+  end
+
+  task :seed_users do
+    if Models::User.exists?
+      log('User table is not empty.')
+    else
+      Seed.seed_users
+    end
+  end
+end

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>BSE / About</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<h1>Welcome to the BSE (Best Shop Ever)!</h1>
+
+		<hr>
+		<br>
+
+		<ul>
+	  		<li><a href="/">MAIN PAGE</a></li>
+	  		<li><a href="/contacts" class="current">CONTACT US</a></li>
+	  		<li><a href="/about">ABOUT US</a></li>
+	  	</ul>
+
+	  	<% Faker::Address.street_address %>
+	  	<% Faker::Address.secondary_address %>
+
+	  	<h3>DEPARTMENTS:</h3>
+
+	  	<% 5.times do %>
+		  	<hr>
+		  	<p style="font-size: 15pt; font-weight: bold;">
+		  		<img src="img/main-bg.png" width="50" height="50">
+		  		<%= Faker::Commerce.department(2, true) %>
+		  	</p>
+		  	
+		  	<p>Head of department: <%= Faker::StarWars.character %></p>
+		  	<p>Title             : <%= Faker::Company.profession %></p>
+		  	<p>Phone             : <%= Faker::PhoneNumber.cell_phone %></p>
+		<% end %>
+	  	<br>
+	  	<hr>
+
+	  	<div id="now" style="text-align: center;">
+	  		<script type="text/javascript" src="js/timenow.js"></script>
+	  	</div>
+	</body>
+</html>

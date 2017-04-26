@@ -1,0 +1,42 @@
+require_relative 'config/configuration'
+require 'yaml'
+
+namespace :db do
+
+  desc 'Apply changes to database'
+  task :migrate do
+    ActiveRecord::Migrator.migrate('db/migrations', nil)
+  end
+
+  desc 'Initial filling of database'
+  task :seed do
+    require_relative 'db/seed'
+
+    if Models::Product.find_by_id(1).nil?    
+    	Seed.seed
+    else
+    	p 'Data base is already initialized. Nothing is done...'
+    end
+  end
+
+  desc 'Rolling back to previous version of database'
+  task :rollback do
+  	version = ActiveRecord::Migrator.current_version - 1
+  	if version > 0
+    	ActiveRecord::Migrator.migrate('db/migrations/', version)
+    	p "Rollback OK, current version of DB: #{version}"
+    else
+    	p 'Nothing to rollback, sorry...'
+    end
+  end
+
+  desc 'Create new database if not exist'
+  task :create_db do
+     ActiveRecord::Base.establish_connection(
+       :adapter   => 'sqlite3',
+       :database  => 'db/production.sqlite3'
+    )
+     p 'Connection established...'
+     Rake::Task['db:migrate'].execute
+  end
+end
